@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -54,11 +55,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-
-
         mAuth.addAuthStateListener(mAuthListener);
-
-
     }
 
     @Override
@@ -66,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
         super.onStop();
         if (mAuthListener != null) {
             mAuth.removeAuthStateListener(mAuthListener);
+            FirebaseAuth.getInstance().signOut();
         }
     }
 
@@ -103,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
             // FirebaseUser.getToken() instead.
             String uid = user.getUid();
 
-            Log.d(TAG,name);
+            //Log.d(TAG,name);
             Log.d(TAG,email2);
             Log.d(TAG,uid);
 
