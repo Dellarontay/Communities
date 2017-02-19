@@ -1,5 +1,6 @@
 package tree.test;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -32,6 +33,8 @@ public class SignUpActivity extends AppCompatActivity {
 
         String email = emailText.getText().toString();
         String password = passwordText.getText().toString();
+        if(email.equals("")) email = "dellreadus@gmail.com";
+        if(password.equals("")) password = "41508046";
         MainActivity.mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -76,6 +79,13 @@ public class SignUpActivity extends AppCompatActivity {
                         }
                     });
 
+
+            Intent intent = new Intent(getApplicationContext(),Main2Activity.class);
+
+            intent.setAction(Intent.ACTION_MAIN);
+            intent.addCategory(Intent.CATEGORY_LAUNCHER);
+
+            startActivity(intent);
         }
     }
 }

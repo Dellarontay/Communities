@@ -51,8 +51,6 @@ public class MainActivity extends AppCompatActivity {
                 // ...
             }
         };
-
-
     }
 
     @Override
@@ -77,54 +75,6 @@ public class MainActivity extends AppCompatActivity {
         intent.addCategory(Intent.CATEGORY_LAUNCHER);
 
         startActivity(intent);
-
-//        String email = "dellreadus@gmail.com";
-//        String password = "41508046";
-//        mAuth.createUserWithEmailAndPassword(email, password)
-//                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-//                    @Override
-//                    public void onComplete(@NonNull Task<AuthResult> task) {
-//                        Log.d(TAG, "createUserWithEmail:onComplete:" + task.isSuccessful());
-//
-//                        // If sign in fails, display a message to the user. If sign in succeeds
-//                        // the auth state listener will be notified and logic to handle the
-//                        // signed in user can be handled in the listener.
-//                        if (!task.isSuccessful()) {
-//                            //Toast.makeText(EmailPasswordActivity.this, "Authentication failed.",
-//                              //      Toast.LENGTH_SHORT).show();
-//                        }
-//
-//                        // ...
-//                    }
-//                });
-//
-//        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-//        if (user != null) {
-//            // Name, email address, and profile photo Url
-//            String name = user.getDisplayName();
-//            String email2 = user.getEmail();
-//            Uri photoUrl = user.getPhotoUrl();
-//
-//            // The user's ID, unique to the Firebase project. Do NOT use this value to
-//            // authenticate with your backend server, if you have one. Use
-//            // FirebaseUser.getToken() instead.
-//            String uid = user.getUid();
-//
-//            //Log.d(TAG,name);
-//            Log.d(TAG,email2);
-//            Log.d(TAG,uid);
-//
-//            user.sendEmailVerification()
-//                    .addOnCompleteListener(new OnCompleteListener<Void>() {
-//                        @Override
-//                        public void onComplete(@NonNull Task<Void> task) {
-//                            if (task.isSuccessful()) {
-//                                Log.d(TAG, "Email sent.");
-//                            }
-//                        }
-//                    });
-//
-//        }
     }
 
     public void signIn(View view) {
@@ -168,14 +118,8 @@ public class MainActivity extends AppCompatActivity {
 
             //Log.d(TAG,email2);
             //Log.d(TAG,uid);
-            Intent intent = new Intent(getApplicationContext(),Main2Activity.class);
 
-            intent.setAction(Intent.ACTION_MAIN);
-            intent.addCategory(Intent.CATEGORY_LAUNCHER);
-
-            startActivity(intent);
         }
-
 
     }
 }
