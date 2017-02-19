@@ -14,6 +14,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 
 public class SignUpActivity extends AppCompatActivity {
 
@@ -27,14 +28,17 @@ public class SignUpActivity extends AppCompatActivity {
 
 
     public void newAccount(View view) {
-
         EditText emailText = (EditText)findViewById(R.id.emailEdit);
         EditText passwordText = (EditText)findViewById(R.id.passwordEdit);
+        EditText nicknameText = (EditText)findViewById(R.id.passwordEdit);
 
         String email = emailText.getText().toString();
         String password = passwordText.getText().toString();
+        String nickname = nicknameText.getText().toString();
+
         if(email.equals("")) email = "dellreadus@gmail.com";
         if(password.equals("")) password = "41508046";
+
         MainActivity.mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -54,6 +58,25 @@ public class SignUpActivity extends AppCompatActivity {
                 });
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+
+        if(!nickname.equals("")){
+            UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                    .setDisplayName(nickname)
+                    .build();
+
+            user.updateProfile(profileUpdates)
+                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if (task.isSuccessful()) {
+                                Log.d(TAG, "User profile updated.");
+                            }
+                        }
+                    });
+        }
+
+
         if (user != null) {
             // Name, email address, and profile photo Url
             String name = user.getDisplayName();
