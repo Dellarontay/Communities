@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.ListAdapter;
+import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 
@@ -18,6 +19,7 @@ import com.facebook.messenger.MessengerUtils;
 import com.facebook.messenger.MessengerThreadParams;
 import com.facebook.messenger.ShareToMessengerParams;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -52,9 +54,17 @@ public class Home extends AppCompatActivity {
 
         LinearLayout linLayout = (LinearLayout) scrollView.findViewById(R.id.vertStack);
         //ListAdapter adapter = new ListAdapter()
-        for(int i = 0; i < 10; i ++){
+        ArrayList<User> arrayOfUsers = new ArrayList<User>();
 
+        for(int i = 0; i < 10; i ++){
+            arrayOfUsers.add(new User("Guy","community for Hope: " + i + "@love.com","love"));
         }
+
+
+        UserAdapter adapter = new UserAdapter(this, arrayOfUsers);
+// Attach the adapter to a ListView
+        ListView listView = (ListView) findViewById(R.id.list);
+        listView.setAdapter(adapter);
 
     }
 }
