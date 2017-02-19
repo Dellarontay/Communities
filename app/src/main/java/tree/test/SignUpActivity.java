@@ -60,7 +60,7 @@ public class SignUpActivity extends AppCompatActivity {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
 
-        if(!nickname.equals("")){
+        /*if(!nickname.equals("")){
             UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
                     .setDisplayName(nickname)
                     .build();
@@ -74,7 +74,7 @@ public class SignUpActivity extends AppCompatActivity {
                             }
                         }
                     });
-        }
+        }*/
 
 
         if (user != null) {
@@ -88,19 +88,16 @@ public class SignUpActivity extends AppCompatActivity {
             // FirebaseUser.getToken() instead.
             String uid = user.getUid();
 
-            //Log.d(TAG,name);
-            Log.d(TAG,email2);
-            Log.d(TAG,uid);
 
-            user.sendEmailVerification()
-                    .addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task) {
-                            if (task.isSuccessful()) {
-                                Log.d(TAG, "Email sent.");
-                            }
-                        }
-                    });
+//            user.sendEmailVerification()
+//                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+//                        @Override
+//                        public void onComplete(@NonNull Task<Void> task) {
+//                            if (task.isSuccessful()) {
+//                                Log.d(TAG, "Email sent.");
+//                            }
+//                        }
+//                    });
 
 
             Intent intent = new Intent(getApplicationContext(),Main2Activity.class);

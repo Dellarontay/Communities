@@ -24,6 +24,9 @@ public class Main2Activity extends AppCompatActivity {
         setContentView(R.layout.activity_main2);
     }
 
+
+
+
     public void exploreTheCommunity(View view) {
 
         EditText text = (EditText) findViewById(R.id.editText);
@@ -41,6 +44,13 @@ public class Main2Activity extends AppCompatActivity {
             // authenticate with your backend server, if you have one. Use
             // FirebaseUser.getToken() instead.
             String uid = user.getUid();
+
+            Intent intent = new Intent(getApplicationContext(),Home.class);
+
+            intent.setAction(Intent.ACTION_MAIN);
+            intent.addCategory(Intent.CATEGORY_LAUNCHER);
+
+            startActivity(intent);
         }
         else{
             //user not logged in

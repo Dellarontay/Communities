@@ -28,7 +28,6 @@ public class MainActivity extends AppCompatActivity {
 
     private String TAG = "Community_debug";
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,8 +62,8 @@ public class MainActivity extends AppCompatActivity {
     public void onStop() {
         super.onStop();
         if (mAuthListener != null) {
-            mAuth.removeAuthStateListener(mAuthListener);
-            FirebaseAuth.getInstance().signOut();
+            //mAuth.removeAuthStateListener(mAuthListener);
+            //FirebaseAuth.getInstance().signOut();
         }
     }
 
@@ -78,29 +77,32 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void signIn(View view) {
-
         String email = "dellreadus@gmail.com";
         String password = "41508046";
-        mAuth.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        Log.d(TAG, "signInWithEmail:onComplete:" + task.isSuccessful());
-
-                        // If sign in fails, display a message to the user. If sign in succeeds
-                        // the auth state listener will be notified and logic to handle the
-                        // signed in user can be handled in the listener.
-                        if (!task.isSuccessful()) {
-                            Log.w(TAG, "signInWithEmail", task.getException());
-                            //Toast.makeText(EmailPasswordActivity.this, "Authentication failed.",
-                              //      Toast.LENGTH_SHORT).show();
-                        }
-
-                        // ...
-                    }
-                });
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if(user == null){
+            mAuth.signInWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            Log.d(TAG, "signInWithEmail:onComplete:" + task.isSuccessful());
+
+                            // If sign in fails, display a message to the user. If sign in succeeds
+                            // the auth state listener will be notified and logic to handle the
+                            // signed in user can be handled in the listener.
+                            if (!task.isSuccessful()) {
+                                Log.w(TAG, "signInWithEmail", task.getException());
+                                //Toast.makeText(EmailPasswordActivity.this, "Authentication failed.",
+                                //      Toast.LENGTH_SHORT).show();
+                            }
+
+                            // ...
+                        }
+                    });
+        }
+
+        user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
             // Name, email address, and profile photo Url
             String name = user.getProviderId();
