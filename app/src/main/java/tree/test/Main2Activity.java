@@ -41,17 +41,9 @@ public class Main2Activity extends AppCompatActivity {
             // authenticate with your backend server, if you have one. Use
             // FirebaseUser.getToken() instead.
             String uid = user.getUid();
-
-            System.out.println( " Activity 2 : Name of user: " + email2);
-            System.out.println( " Name of user: " + name);
-            System.out.println( " Name of user: " + name);
-
-            //Log.d(TAG,email2);
-            //Log.d(TAG,uid);
-            Intent intent = new Intent(getApplicationContext(),Main2Activity.class);
-            startActivity(intent);
         }
-
-        System.out.println(info);
+        else{
+            //user not logged in
+        }
     }
 }
