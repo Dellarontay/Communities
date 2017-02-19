@@ -18,8 +18,8 @@ public class User {
 
     public User(String name,String email,String issue){
         name = name;
-        email = email;
-        issue = issue;
+        this.email = email;
+        this.issue = issue;
     }
 
     public String getName() {
