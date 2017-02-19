@@ -4,35 +4,64 @@
     android:layout_width="match_parent" android:layout_height="match_parent">
 
 
-    <ImageView
-        android:id="@+id/imgView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/defaultuser"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <TextView
-        android:text="Issue"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/userIssue"
-        android:layout_marginLeft="24dp"
-        android:layout_marginStart="24dp"
-        android:layout_below="@+id/userEmail"
-        android:layout_toRightOf="@+id/imgView"
-        android:layout_toEndOf="@+id/imgView"
-        android:layout_marginTop="95dp" />
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
 
-    <TextView
-        android:id="@+id/userEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
-        tools:text="Email"
-        android:layout_alignParentTop="true"
-        android:layout_alignRight="@+id/userIssue"
-        android:layout_alignEnd="@+id/userIssue" />
+            <ImageView
+                android:id="@+id/imgView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/defaultuser"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/userEmail"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="56dp"
+                tools:text="Email"
+                android:layout_alignParentTop="true"
+                android:layout_alignRight="@+id/userIssue"
+                android:layout_alignEnd="@+id/userIssue"
+                android:textSize="20sp"
+                android:textColor="@color/cardview_dark_background"
+                android:layout_weight="1" />
+
+            <TextView
+                android:text="Issue"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/userIssue"
+                android:layout_marginLeft="24dp"
+                android:layout_marginStart="24dp"
+                android:layout_below="@+id/userEmail"
+                android:layout_toRightOf="@+id/imgView"
+                android:layout_toEndOf="@+id/imgView"
+                android:layout_marginTop="95dp"
+                android:textSize="20sp"
+                android:textColor="@color/cardview_dark_background"
+                android:layout_weight="1" />
+
+        </LinearLayout>
+
+    </LinearLayout>
 
 </RelativeLayout>

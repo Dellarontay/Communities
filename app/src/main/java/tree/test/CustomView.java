@@ -1,13 +1,16 @@
 package tree.test;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.AttributeSet;
 import android.view.Display;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
 
 /**
  * Created by Dellarontay on 2/18/2017.
@@ -58,4 +61,5 @@ public class CustomView extends RelativeLayout {
         Display display = wm.getDefaultDisplay();
         setMeasuredDimension(display.getWidth(), display.getHeight());
     }
+
 }

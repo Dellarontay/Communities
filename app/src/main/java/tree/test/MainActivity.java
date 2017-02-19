@@ -1,5 +1,6 @@
 package tree.test;
 
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.annotation.NonNull;
@@ -62,8 +63,8 @@ public class MainActivity extends AppCompatActivity {
     public void onStop() {
         super.onStop();
         if (mAuthListener != null) {
-            //mAuth.removeAuthStateListener(mAuthListener);
-            //FirebaseAuth.getInstance().signOut();
+            mAuth.removeAuthStateListener(mAuthListener);
+            FirebaseAuth.getInstance().signOut();
         }
     }
 
@@ -73,7 +74,19 @@ public class MainActivity extends AppCompatActivity {
         intent.setAction(Intent.ACTION_MAIN);
         intent.addCategory(Intent.CATEGORY_LAUNCHER);
 
-        startActivity(intent);
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+        if(user==null){
+            startActivity(intent);
+        }
+        else{
+            Context context = getApplicationContext();
+            CharSequence text = "You already are signed up log in!";
+            int duration = Toast.LENGTH_SHORT;
+
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+        }
     }
 
     public void signIn(View view) {
@@ -100,27 +113,24 @@ public class MainActivity extends AppCompatActivity {
                             // ...
                         }
                     });
+            user = FirebaseAuth.getInstance().getCurrentUser();
         }
 
-        user = FirebaseAuth.getInstance().getCurrentUser();
+
         if (user != null) {
-            // Name, email address, and profile photo Url
-            String name = user.getProviderId();
-            String email2 = user.getEmail();
-            Uri photoUrl = user.getPhotoUrl();
+            Intent intent = new Intent(getApplicationContext(),Home.class);
 
-            // The user's ID, unique to the Firebase project. Do NOT use this value to
-            // authenticate with your backend server, if you have one. Use
-            // FirebaseUser.getToken() instead.
-            String uid = user.getUid();
+            intent.setAction(Intent.ACTION_MAIN);
+            intent.addCategory(Intent.CATEGORY_LAUNCHER);
 
-            System.out.println( " Name of user: " + name);
-            System.out.println( " Name of user: " + name);
-            System.out.println( " Name of user: " + name);
+            startActivity(intent);
+        }else{
+            Context context = getApplicationContext();
+            CharSequence text = "You are not signed up!";
+            int duration = Toast.LENGTH_SHORT;
 
-            //Log.d(TAG,email2);
-            //Log.d(TAG,uid);
-
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
         }
 
     }

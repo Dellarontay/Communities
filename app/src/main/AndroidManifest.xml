@@ -4,8 +4,9 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
-    <provider android:authorities="com.facebook.app.FacebookContentProvider175763576249172"
+    <provider
         android:name="com.facebook.FacebookContentProvider"
+        android:authorities="com.facebook.app.FacebookContentProvider175763576249172"
         android:exported="true" />
 
     <application
@@ -29,11 +30,13 @@
         <activity android:name=".SignUpActivity" />
         <activity android:name=".Home">
             <intent-filter>
-                <action android:name="android.intent.action.PICK"/>
+                <action android:name="android.intent.action.PICK" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="com.facebook.orca.category.PLATFORM_THREAD_20150314" />
             </intent-filter>
         </activity>
+        <activity android:name=".Messaging"></activity>
     </application>
 
 </manifest>

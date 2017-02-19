@@ -27,6 +27,7 @@ public class Main2Activity extends AppCompatActivity {
 
 
 
+
     public void exploreTheCommunity(View view) {
 
         EditText text = (EditText) findViewById(R.id.editText);

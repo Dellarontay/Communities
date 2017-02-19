@@ -30,7 +30,7 @@ public class SignUpActivity extends AppCompatActivity {
     public void newAccount(View view) {
         EditText emailText = (EditText)findViewById(R.id.emailEdit);
         EditText passwordText = (EditText)findViewById(R.id.passwordEdit);
-        EditText nicknameText = (EditText)findViewById(R.id.passwordEdit);
+        EditText nicknameText = (EditText)findViewById(R.id.nicknameText);
 
         String email = emailText.getText().toString();
         String password = passwordText.getText().toString();
